@@ -462,7 +462,7 @@ blockquote {
 	border: 1px solid rgba(255, 255, 255, 0.32);
 	box-shadow: 0 30px 60px rgba(19, 9, 36, 0.38);
 	backdrop-filter: blur(18px);
-	color: #190f3a;
+	color: #1d1440;
 }
 
 .card__image {
@@ -483,7 +483,7 @@ blockquote {
 }
 
 .card p {
-	color: rgba(25, 17, 52, 0.75);
+	color: rgba(33, 22, 70, 0.85);
 	margin: 0 0 1.1em;
 }
 
@@ -494,12 +494,12 @@ blockquote {
 	margin: 0 0 1.1em;
 	display: grid;
 	gap: 14px;
-	color: rgba(25, 17, 52, 0.7);
+	color: rgba(30, 20, 64, 0.82);
 }
 
 .sessions strong,
 .credentials strong {
-	color: #1f1546;
+	color: #2a1c56;
 }
 
 .sessions li,
