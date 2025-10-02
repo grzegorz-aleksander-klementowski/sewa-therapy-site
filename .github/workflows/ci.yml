@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Prettier formatting check
+        run: npx --yes prettier@3.2.5 --check "index.html" "style.css" "script.js"
+
+      - name: Run HTMLHint accessibility and structure check
+        run: npx --yes htmlhint@1.1.4 index.html
+        env:
+          HTMLHINT_USE_CONFIG: "true"
