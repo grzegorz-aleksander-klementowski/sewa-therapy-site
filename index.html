@@ -24,6 +24,7 @@
         --headline-dark: rgba(255, 255, 255, 0.92);
         --headline-light-ink: #111111;
         --headline-light-beige: #c9a66b;
+        --chaos-interval: 500;
       }
 
       *,
@@ -81,6 +82,30 @@
         color: #fff;
         overflow: hidden;
         transition: background 2.4s ease;
+      }
+
+      .chaos-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 180ms ease;
+        pointer-events: none;
+        z-index: 0;
+        filter: brightness(0.32) contrast(1.05) saturate(0.9);
+      }
+
+      .chaos-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .chaos-bg.is-visible {
+        opacity: 1;
       }
 
       #intro .thoughts {
@@ -622,9 +647,14 @@
         .scroll-cue::after,
         .scroll-indicator,
         .scroll-indicator .scroll-text,
-        .scroll-indicator .scroll-icon {
+        .scroll-indicator .scroll-icon,
+        .chaos-bg {
           animation: none !important;
           transition: none !important;
+        }
+
+        :root {
+          --chaos-interval: 2000;
         }
       }
     </style>
@@ -633,7 +663,9 @@
     <main>
       <!-- Section 1: From anxious thoughts to clarity -->
       <section id="intro" class="panel" aria-label="Seva intro sequence">
-        <div class="thoughts" aria-hidden="true"></div>
+        <div class="chaos-bg chaos-bg-a" aria-hidden="true"></div>
+        <div class="chaos-bg chaos-bg-b" aria-hidden="true"></div>
+        <div class="thoughts bad-thoughts-layer" aria-hidden="true"></div>
         <div class="intro-overlay" aria-hidden="true"></div>
         <div class="intro-message">
           <h1 class="mantra hero-headline">Know Yourself + Love Yourself</h1>
@@ -879,7 +911,90 @@
       document.addEventListener("DOMContentLoaded", () => {
         const intro = document.getElementById("intro");
         const thoughtsContainer = intro.querySelector(".thoughts");
+        const chaosLayers = intro.querySelectorAll(".chaos-bg");
         const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const rootStyles = getComputedStyle(document.documentElement);
+
+        const chaosImages = [
+          "https://images.unsplash.com/photo-1670702389707-e20984fab9f6?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1663439625549-24c040c2f4d4?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1667391187178-4668539fca79?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1671656333452-7369599f92ee?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1678585056636-323de5098c58?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1608303309759-08b7d46c7b5a?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1583498653646-a88ecfd0d868?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1483519173755-be893fab1f46?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZXllfGVufDB8fDB8fHww"
+        ];
+
+        chaosImages.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+
+        const parsedChaosInterval = parseInt(
+          rootStyles.getPropertyValue("--chaos-interval").trim(),
+          10
+        );
+        const chaosInterval = Number.isFinite(parsedChaosInterval)
+          ? parsedChaosInterval
+          : 500;
+
+        let chaosTimer = null;
+        let chaosImageIndex = 0;
+        let visibleChaosLayerIndex = 0;
+
+        const setChaosBackground = (layer, src) => {
+          if (layer) {
+            layer.style.backgroundImage = `url("${src}")`;
+          }
+        };
+
+        const startChaosSlideshow = () => {
+          if (chaosLayers.length < 2 || chaosImages.length === 0) {
+            return;
+          }
+
+          chaosLayers.forEach((layer) => layer.classList.remove("is-visible"));
+          chaosImageIndex = 0;
+          visibleChaosLayerIndex = 0;
+
+          setChaosBackground(chaosLayers[0], chaosImages[chaosImageIndex]);
+          chaosLayers[0].classList.add("is-visible");
+          chaosImageIndex = (chaosImageIndex + 1) % chaosImages.length;
+
+          if (motionQuery.matches) {
+            return;
+          }
+
+          setChaosBackground(chaosLayers[1], chaosImages[chaosImageIndex]);
+          chaosLayers[1].classList.remove("is-visible");
+          chaosImageIndex = (chaosImageIndex + 1) % chaosImages.length;
+
+          if (chaosTimer) {
+            clearInterval(chaosTimer);
+          }
+
+          chaosTimer = setInterval(() => {
+            const nextLayerIndex = visibleChaosLayerIndex === 0 ? 1 : 0;
+            const incomingLayer = chaosLayers[nextLayerIndex];
+            const outgoingLayer = chaosLayers[visibleChaosLayerIndex];
+
+            setChaosBackground(incomingLayer, chaosImages[chaosImageIndex]);
+            incomingLayer.classList.add("is-visible");
+            outgoingLayer.classList.remove("is-visible");
+
+            visibleChaosLayerIndex = nextLayerIndex;
+            chaosImageIndex = (chaosImageIndex + 1) % chaosImages.length;
+          }, chaosInterval);
+        };
+
+        const stopChaosSlideshow = () => {
+          if (chaosTimer) {
+            clearInterval(chaosTimer);
+            chaosTimer = null;
+          }
+          chaosLayers.forEach((layer) => layer.classList.remove("is-visible"));
+        };
 
         const thoughtPhrases = [
           "I'm not good enough",
@@ -926,8 +1041,11 @@
           renderThoughts();
         }
 
+        startChaosSlideshow();
+
         const revealDelay = motionQuery.matches ? 1600 : 4200;
         setTimeout(() => {
+          stopChaosSlideshow();
           intro.classList.add("reveal");
           setTimeout(() => {
             document.body.classList.add("light-phase");
