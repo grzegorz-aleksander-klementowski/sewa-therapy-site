@@ -39,6 +39,23 @@
         line-height: 1.6;
       }
 
+      blockquote {
+        margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+        padding-left: 1.2rem;
+        border-left: 2px solid var(--accent-soft);
+        font-family: "Playfair Display", "Inter", serif;
+        font-size: clamp(1.05rem, 2.7vw, 1.4rem);
+        letter-spacing: 0.04em;
+        color: var(--text-primary);
+        opacity: 0.82;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid rgba(111, 111, 114, 0.2);
+        margin: clamp(1.8rem, 4vw, 2.6rem) 0;
+      }
+
       main {
         width: 100%;
         overflow-x: hidden;
@@ -345,6 +362,25 @@
         color: var(--text-muted);
       }
 
+      .content-block h4 {
+        margin: 0;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: var(--accent);
+      }
+
+      .content-block ul {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: var(--text-muted);
+        list-style: disc;
+      }
+
+      .content-block li {
+        margin-bottom: 0.6rem;
+      }
+
       .ethos-grid {
         display: grid;
         gap: clamp(1rem, 2vw, 1.8rem);
@@ -381,7 +417,7 @@
         box-shadow: 0 24px 50px rgba(14, 10, 5, 0.16);
       }
 
-      .session-card h4 {
+      .session-card h3 {
         margin: 0;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -475,16 +511,30 @@
         color: rgba(255, 255, 255, 0.68);
       }
 
-      footer a {
-        color: rgba(255, 255, 255, 0.88);
-        text-decoration: none;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        font-size: 0.78rem;
+      footer blockquote {
+        color: rgba(255, 255, 255, 0.78);
+        border-color: rgba(255, 255, 255, 0.22);
       }
 
-      footer a:hover {
-        color: var(--accent);
+      .cta-button {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 0.85rem 2.4rem;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--bg-dark);
+        text-decoration: none;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 16px 40px rgba(216, 178, 110, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(216, 178, 110, 0.4);
       }
 
       /* --- Scroll reveal animations --- */
@@ -586,16 +636,41 @@
               <h3>Seva Ethos</h3>
             </header>
             <div class="ethos-grid">
+              <p>Welcome to your path of transformation and healing.</p>
               <p>
-                Speak directly to the humans you hold. Name the textures of the
-                room: soft linen, slow light through sheer drapes, the ritual of
-                tea before language. Explain that therapy with Seva is not a
-                performance but a gentle dismantling of armour.
+                Life’s challenges — whether trauma, grief, anxiety, addiction, or
+                major life changes — can feel overwhelming. You don’t have to face
+                them alone. This space is here for you if you’re ready to heal,
+                grow, and rediscover your inner strength.
               </p>
               <p>
-                Use this space to outline guiding principles — radical empathy,
-                embodied presence, fierce tenderness. Let visitors feel the
-                calibration from survival to aliveness.
+                Since 2005, I’ve supported individuals, couples, and families as
+                they overcome obstacles and embrace positive change. Together, we
+                tailor each step to your unique needs so you can break free from
+                limiting patterns and cultivate lasting resilience.
+              </p>
+              <blockquote>
+                <em>“Out of your vulnerabilities will come your strength.”</em>
+              </blockquote>
+              <hr />
+              <h4>Why Therapy?</h4>
+              <p>
+                Therapy is a powerful invitation into self-exploration, healing,
+                and personal growth. It’s a place where you can slow down, be heard,
+                and rewire the way you meet your world.
+              </p>
+              <ul>
+                <li>Understand and transform the challenges that hold you back.</li>
+                <li>Break free from negative patterns and cultivate healthier habits.</li>
+                <li>Gain clarity, confidence, and resilience for life’s evolutions.</li>
+              </ul>
+              <p>
+                Using modalities such as NLP, Reverse Therapy, Solution-Oriented
+                Therapy, and Positive Psychology, every session is crafted to
+                meet you exactly where you are — and to open the possibility of
+                where you want to go. Together, we’ll explore what’s keeping you
+                stuck and unlock the possibilities for a brighter, more
+                fulfilling future.
               </p>
             </div>
           </article>
@@ -604,27 +679,51 @@
             <header>
               <h3>Seva Sessions</h3>
             </header>
+            <p>
+              Services I Offer: your journey to well-being begins with
+              intentional spaces dedicated to transformation, growth, and
+              compassionate accountability.
+            </p>
             <div class="sessions-grid">
               <div class="session-card">
-                <h4>Individual Immersions</h4>
+                <h3>Private Therapy</h3>
                 <p>
-                  75-minute sessions designed for deep nervous system reset,
-                  attachment repair, and integration practices to take home.
+                  Unlock your true potential in one-on-one sessions where we dive
+                  beneath the surface of what’s weighing you down and reframe the
+                  stories you carry. Advanced Ericksonian Hypnosis, NLP, and Positive
+                  Psychology support you in reshaping thought patterns, emotions, and
+                  behaviours.
+                </p>
+                <p>
+                  Whether you’re navigating trauma, anxiety, or feeling lost, these
+                  sessions empower you with clarity, strength, and resilience to
+                  move forward with confidence.
                 </p>
               </div>
               <div class="session-card">
-                <h4>Couple Resonance Labs</h4>
+                <h3>Couples Therapy</h3>
                 <p>
-                  Guided experiences that weave dialogue, somatic mirroring, and
-                  co-regulation for partners rebuilding trust and intimacy.
+                  Reignite connection and understanding with sessions that rebuild
+                  trust, refine communication, and deepen emotional connection at a
+                  pace that honours both partners.
+                </p>
+                <p>
+                  Drawing on family therapy and coaching, I balance challenge with
+                  empathy so you uncover the strengths within your relationship and
+                  chart a path toward renewed intimacy.
                 </p>
               </div>
               <div class="session-card">
-                <h4>Collective Circles</h4>
+                <h3>Consultations in Polish</h3>
                 <p>
-                  Intentional groups for founders, caregivers, and creatives who
-                  crave shared witnessing, emotional fluency, and ritualised
-                  rest.
+                  Experience therapy in your native language so you can express
+                  yourself freely and feel fully understood. Safety in language
+                  matters, and healing should remain accessible.
+                </p>
+                <p>
+                  Together we’ll craft a supportive environment where cultural
+                  nuance is honoured and confidence can flourish in both heart and
+                  voice.
                 </p>
               </div>
             </div>
@@ -637,17 +736,53 @@
             <div class="story-wrapper">
               <div class="story-image" role="img" aria-label="Warm portrait placeholder"></div>
               <div class="story-copy">
-                <h4>Begin within</h4>
+                <h4>A unique approach to therapy</h4>
                 <p>
-                  Place Seva’s biography here — the arc from personal rupture to
-                  professional devotion. Speak about lineage, the teachers who
-                  shaped her methodology, and the communities she serves.
+                  My work is deeply inspired by Milton Erickson, the pioneer of
+                  medical hypnosis and family therapy whose methods continue to
+                  shape modern hypnotherapy.
                 </p>
                 <p>
-                  Invite visitors into a narrative of resilience. Touch on
-                  credentials without losing poetry. Show the human who knows how
-                  to hold darkness and mirror light.
+                  Training with Stephen Gilligan, Bill O’Hanlon, Dr. Richard
+                  Bandler, and Paul McKenna allows me to integrate Ericksonian
+                  techniques, NLP, and Positive Psychology into every session.
                 </p>
+                <p>
+                  Whatever you are navigating — chronic fatigue, addiction,
+                  relationship difficulties, or emotional blocks — I’ll stand by
+                  you with guidance and tools to reclaim your life.
+                </p>
+                <blockquote>
+                  <em>“Out of your vulnerabilities will come your strength.”</em>
+                </blockquote>
+                <hr />
+                <h4>Why work with me?</h4>
+                <p>
+                  I bring academic grounding, specialist training, and lived
+                  experience to every partnership. Here’s what clients receive:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Psychology degree:</strong> Specialising in child
+                    cognitive development at London South Bank University under
+                    Professor David Messer.
+                  </li>
+                  <li>
+                    <strong>Elite training:</strong> Apprenticeships with renowned
+                    therapists such as Dr. Stephen Gilligan, Bill O’Hanlon, Dr.
+                    Richard Bandler, and Paul McKenna.
+                  </li>
+                  <li>
+                    <strong>Extensive addiction recovery work:</strong> Five years
+                    supporting people through Change Grow Live, one of the UK’s
+                    leading charities.
+                  </li>
+                  <li>
+                    <strong>A deep commitment to your transformation:</strong> I
+                    believe self-belief can be cultivated, and even the smallest
+                    seed of confidence can bloom into lasting change.
+                  </li>
+                </ul>
               </div>
             </div>
           </article>
@@ -657,13 +792,21 @@
 
     <footer id="contact" aria-label="Seva contact">
       <div class="cta">
-        <h4>Reach for the session</h4>
+        <h4>Take the first step towards change</h4>
         <p>
-          Replace with Seva’s scheduling flow — whether that’s a form, direct
-          email, or a link to a private booking page. Offer a sentence about how
-          first sessions unfold and the pace clients can expect.
+          Healing begins with a decision — to believe in yourself, to seek
+          support, and to move toward a life you love.
         </p>
-        <a href="mailto:hello@sevatherapy.com">hello@sevatherapy.com</a>
+        <p>
+          If you’re ready to explore your challenges, find solutions, and build
+          new possibilities, I’ll be here to guide you every step of the way.
+        </p>
+        <a class="cta-button" href="mailto:info@balanceyourmentalhealth.com"
+          >Email Seva</a
+        >
+        <blockquote>
+          <em>“Out of your vulnerabilities will come your strength.”</em>
+        </blockquote>
       </div>
     </footer>
 
