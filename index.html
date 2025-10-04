@@ -21,6 +21,9 @@
         --text-primary: #1f1f1f;
         --text-muted: #6f6f72;
         --max-width: min(1100px, 90vw);
+        --headline-dark: rgba(255, 255, 255, 0.92);
+        --headline-light-ink: #111111;
+        --headline-light-beige: #c9a66b;
       }
 
       *,
@@ -142,6 +145,20 @@
         transition: opacity 1.2s ease, transform 1.2s ease;
       }
 
+      .hero-headline {
+        color: var(--headline-dark);
+        text-shadow: 0 1px 18px rgba(0, 0, 0, 0.35);
+        transition: color 500ms ease, text-shadow 500ms ease;
+      }
+
+      body.light-phase .hero-headline {
+        color: var(--headline-light-beige);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
+        /* alternative variant if needed:
+        color: var(--headline-light-ink);
+        */
+      }
+
       #intro .mantra {
         margin: 0;
         font-family: "Playfair Display", "Inter", serif;
@@ -171,7 +188,6 @@
         font-size: 0.85rem;
         letter-spacing: 0.4em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.75);
         opacity: 0.8;
       }
 
@@ -179,7 +195,7 @@
         content: "";
         width: 1px;
         height: 2.8rem;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7),
+        background: linear-gradient(to bottom, currentColor,
             rgba(255, 255, 255, 0));
         animation: breathe 3.5s ease-in-out infinite;
       }
@@ -194,6 +210,48 @@
           transform: translateY(8px);
           opacity: 1;
         }
+      }
+
+      .scroll-indicator,
+      .scroll-indicator .scroll-text {
+        color: var(--headline-dark);
+        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+        transition: color 500ms ease, opacity 300ms ease, text-shadow 500ms ease;
+      }
+
+      .scroll-indicator .scroll-text {
+        display: inline-block;
+      }
+
+      .scroll-indicator .scroll-icon {
+        stroke: rgba(255, 255, 255, 0.92);
+        fill: none;
+        transition: stroke 500ms ease, fill 500ms ease, opacity 300ms ease;
+      }
+
+      body.light-phase .scroll-indicator,
+      body.light-phase .scroll-indicator .scroll-text {
+        color: var(--headline-light-beige);
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+        /* alternative ink variant:
+        color: var(--headline-light-ink);
+        */
+      }
+
+      body.light-phase .scroll-indicator .scroll-icon {
+        stroke: var(--headline-light-beige);
+        /* alternative ink variant:
+        stroke: var(--headline-light-ink);
+        */
+      }
+
+      body.light-phase .scroll-indicator::after {
+        background: linear-gradient(to bottom, currentColor,
+            rgba(255, 255, 255, 0));
+      }
+
+      .scroll-indicator:hover {
+        opacity: 0.85;
       }
 
       #intro.reveal {
@@ -453,7 +511,7 @@
         min-height: clamp(16rem, 40vh, 22rem);
         background:
           linear-gradient(135deg, rgba(216, 178, 110, 0.45), rgba(245, 232, 218, 0.2)),
-          url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80");
+          url("./images/fulls/09.png");
         background-size: cover;
         background-position: center;
         box-shadow: 0 30px 70px rgba(15, 10, 5, 0.18);
@@ -561,8 +619,12 @@
         }
 
         #intro .mantra,
-        .scroll-cue::after {
+        .scroll-cue::after,
+        .scroll-indicator,
+        .scroll-indicator .scroll-text,
+        .scroll-indicator .scroll-icon {
           animation: none !important;
+          transition: none !important;
         }
       }
     </style>
@@ -574,8 +636,10 @@
         <div class="thoughts" aria-hidden="true"></div>
         <div class="intro-overlay" aria-hidden="true"></div>
         <div class="intro-message">
-          <h1 class="mantra">Know Yourself + Love Yourself</h1>
-          <span class="scroll-cue">Scroll</span>
+          <h1 class="mantra hero-headline">Know Yourself + Love Yourself</h1>
+          <span class="scroll-cue scroll-indicator"
+            ><span class="scroll-text">Scroll</span></span
+          >
         </div>
       </section>
 
@@ -865,6 +929,9 @@
         const revealDelay = motionQuery.matches ? 1600 : 4200;
         setTimeout(() => {
           intro.classList.add("reveal");
+          setTimeout(() => {
+            document.body.classList.add("light-phase");
+          }, 300);
         }, revealDelay);
 
         // Cycle the healing gallery visuals
