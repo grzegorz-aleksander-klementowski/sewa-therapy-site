@@ -18,10 +18,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Run Prettier formatting check
-        run: npx --yes prettier@3.2.5 --check "index.html" "style.css" "script.js"
+      - name: Run formatting check
+        run: node tools/check-format.js index.html style.css script.js
 
-      - name: Run HTMLHint accessibility and structure check
-        run: npx --yes htmlhint@1.1.4 index.html
-        env:
-          HTMLHINT_USE_CONFIG: "true"
+      - name: Run HTML structure check
+        run: node tools/check-html.js index.html
