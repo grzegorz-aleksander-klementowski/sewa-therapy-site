@@ -529,7 +529,7 @@ body.light-phase .scroll-indicator::after {
   min-height: clamp(16rem, 40vh, 22rem);
   background:
     linear-gradient(135deg, rgba(216, 178, 110, 0.45), rgba(245, 232, 218, 0.2)),
-    url("./images/fulls/09.png");
+    url("./images/new/jpeg(3)");
   background-size: cover;
   background-position: center;
   box-shadow: 0 30px 70px rgba(15, 10, 5, 0.18);
