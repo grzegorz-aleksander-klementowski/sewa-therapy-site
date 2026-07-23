@@ -143,17 +143,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   }, revealDelay);
 
-  // Cycle the healing gallery visuals
-  const galleryImages = document.querySelectorAll(".gallery-image");
-  let galleryIndex = 0;
-  if (galleryImages.length > 1 && !motionQuery.matches) {
+  // Cycle a collection of healing visuals
+  const startSlideshow = (selector, interval) => {
+    const images = document.querySelectorAll(selector);
+    let currentIndex = 0;
+    if (images.length <= 1 || motionQuery.matches) return;
+
     setInterval(() => {
-      const nextIndex = (galleryIndex + 1) % galleryImages.length;
-      galleryImages[galleryIndex].classList.remove("active");
-      galleryImages[nextIndex].classList.add("active");
-      galleryIndex = nextIndex;
-    }, 6500);
-  }
+      const nextIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.remove("active");
+      images[nextIndex].classList.add("active");
+      currentIndex = nextIndex;
+    }, interval);
+  };
+
+  startSlideshow(".gallery-image", 5000);
+  startSlideshow(".story-image-slide", 5000);
 
   // Reveal content blocks gently on scroll
   const revealItems = document.querySelectorAll(".reveal-on-scroll");

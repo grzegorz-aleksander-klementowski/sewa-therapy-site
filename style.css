@@ -527,19 +527,41 @@ body.light-phase .scroll-indicator::after {
   border-radius: 28px;
   overflow: hidden;
   min-height: clamp(16rem, 40vh, 22rem);
-  background:
-    linear-gradient(135deg, rgba(216, 178, 110, 0.45), rgba(245, 232, 218, 0.2)),
-    url("./images/new/jpeg(3)");
+  background: var(--accent);
+  isolation: isolate;
+  box-shadow: 0 30px 70px rgba(15, 10, 5, 0.18);
+}
+
+.story-image-slide {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 30px 70px rgba(15, 10, 5, 0.18);
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.story-image-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.story-image-slide--contain {
+  background-color: var(--bg-light);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .story-image::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(5, 6, 8, 0.55), rgba(5, 6, 8, 0));
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(5, 6, 8, 0.55), rgba(5, 6, 8, 0)),
+    linear-gradient(135deg, rgba(216, 178, 110, 0.45), rgba(245, 232, 218, 0.2));
+  pointer-events: none;
 }
 
 .story-copy {
