@@ -342,6 +342,12 @@ body.light-phase .scroll-indicator::after {
   transform: scale(1);
 }
 
+.gallery-image--contain {
+  background-color: var(--bg-light);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 #transition .transition-copy {
   display: flex;
   flex-direction: column;

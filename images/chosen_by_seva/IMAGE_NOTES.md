@@ -20,10 +20,11 @@ plikami JPEG w przestrzeni sRGB. Wymiary podano po uwzględnieniu orientacji EXI
 | `13.jpeg` | 736 × 920 px | 180 KB | Ten sam obraz morza, osób i napisu co `11.jpeg`. | Duplikat bajt w bajt; nie powinien zajmować osobnego miejsca w galerii. |
 | `14.jpeg` | 736 × 733 px | 100 KB | Zielono-turkusowa spirala muszli/nautilusa o organicznej, promienistej strukturze. | Najlepszy abstrakcyjny pomost między napięciem a odrodzeniem; kwadratowy format bardzo dobrze znosi responsywne kadrowanie. |
 | `15.jpeg` | 736 × 1120 px | 88 KB | Postać stojąca w świetle nad wodą; długi cień układa się w kształt rozpostartych skrzydeł. | Mocne zakończenie galerii: otwartość, wolność i nowy kierunek. Centralny motyw pozostaje czytelny w szerokim kadrze. |
+| `chłopiec-z-kwiatami.jpeg` | 736 × 1111 px | 95 KB | Chłopiec widziany od tyłu, trzymający za plecami intensywnie kolorowy bukiet na tle górskiego pejzażu. | Mocny, ludzki obraz wrażliwości, nadziei i nieoczywistego piękna; centralna postać i kwiaty pozostają czytelne po `cover`. |
 
 ## Zastosowanie na stronie
 
-Sekcja **From Static Noise to Living Light** wykorzystuje dziewięć obrazów w
+Sekcja **From Static Noise to Living Light** wykorzystuje dziesięć obrazów w
 następującej kolejności:
 
 1. `12.jpeg` — samotna droga i początek zmiany;
@@ -34,17 +35,18 @@ następującej kolejności:
 6. `4.jpeg` — odnalezienie wewnętrznego światła;
 7. `8.jpeg` — energia przemiany;
 8. `15.jpeg` — otwarcie, wolność i integracja;
-9. `11.jpeg` — obecność, lekkość i radość chwili.
+9. `11.jpeg` — obecność, lekkość i radość chwili;
+10. `9.jpeg` — zaufanie do procesu i otwartość na miłość.
 
 Sekcja **Seva Story** wykorzystuje osobną karuzelę pięciu obrazów:
 
 1. `5.jpeg` — relacja, zaufanie i towarzyszenie w terapii;
 2. `1.jpeg` — nawiązanie kontaktu i gotowość przyjęcia pomocy;
 3. `10.jpeg` — sprawczość i świadome budowanie siebie;
-4. `9.jpeg` — zaufanie do procesu i otwartość na miłość;
+4. `chłopiec-z-kwiatami.jpeg` — wrażliwość, nadzieja i rozkwit;
 5. `7.jpeg` — równowaga jako cel procesu terapeutycznego.
 
-Główna galeria wykorzystuje dziewięć zdjęć, a „Seva Story” pięć innych zdjęć.
+Główna galeria wykorzystuje dziesięć zdjęć, a „Seva Story” pięć innych zdjęć.
 Żaden obraz ani jego kopia nie występuje w obu karuzelach. Plansze tekstowe w
 „Seva Story” są dopasowane w całości zamiast przycinane przez `cover`. Obie
 karuzele zmieniają obraz co 5 sekund.
