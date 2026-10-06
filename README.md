@@ -3,10 +3,10 @@ SEVA Website
 
 Overview
 --------
-SEVA is a single-page website for a London-based therapist specialising in
-transformational work with individuals, couples, and families. The experience
-leans on a matrix-style hero, a calm visual gallery, and layered content pillars
-that convey the SEVA ethos, sessions, and story.
+SEVA is a single-page website for a London-based therapist and transformational
+coach working with individuals, couples, and professionals. The experience
+leads visitors from a matrix-style hero into a clear explanation of Seva's
+approach, services, experience, and free introductory chemistry meeting.
 
 Project Structure
 -----------------
@@ -16,8 +16,9 @@ Project Structure
   responsive grids, and card layout for SEVA sections.
 - `script.js` - lightweight script that renders the animated "thought matrix"
   phrases in the hero area.
-- `images/` - placeholder photography from the original HTML5 UP template;
-  replace with Seva's assets before launch.
+- `images/` - Seva's curated visual library, profile portrait, and original
+  reference materials. The profile portrait uses an optimised WebP asset with
+  the source PNG retained as a browser fallback.
 - `.github/workflows/ci.yml` - GitHub Actions workflow running Prettier and
   HTMLHint checks on pushes and pull requests.
 - `.htmlhintrc` - HTMLHint configuration applied in CI and locally.
