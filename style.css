@@ -1018,6 +1018,15 @@ footer blockquote {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .profile-card figcaption {
+    position: static;
+    padding: 1rem 1.25rem 1.15rem;
+    border: 0;
+    border-radius: 0;
+    background: #20201f;
+    backdrop-filter: none;
+  }
 }
 
 /* --- Scroll reveal animations --- */
